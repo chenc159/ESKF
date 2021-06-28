@@ -1,6 +1,8 @@
 #ifndef COMMON_H_
 #define COMMON_H_
 
+#include <eigen/Eigen/Core>
+#include <eigen/Eigen/Dense>
 #include <Eigen/Core>
 #include <Eigen/Dense>
 
@@ -10,9 +12,12 @@
 #define MAG_INTERVAL		2e5	///< Maximum allowable time interval between mag system measurements (uSec)
 #define RANGE_MAX_INTERVAL	1e6	///< Maximum allowable time interval between rangefinder system measurements (uSec)
 
-#define MASK_EV_POS 1<<0
-#define MASK_EV_YAW 1<<1
-#define MASK_EV_HGT 1<<2
+constexpr auto MASK_EV_POS = 1<<0;
+constexpr auto MASK_EV_YAW = 1<<1;
+constexpr auto MASK_EV_HGT = 1<<2;
+// #define MASK_EV_POS 1<<0
+// #define MASK_EV_YAW 1<<1
+// #define MASK_EV_HGT 1<<2
 #define MASK_GPS_POS 1<<3
 #define MASK_GPS_VEL 1<<4
 #define MASK_GPS_HGT 1<<5
@@ -20,19 +25,29 @@
 #define MASK_OPTICAL_FLOW 1<<7
 #define MASK_RANGEFINDER 1<<8
 #define MASK_MAG_HEADING 1<<9
-#define MASK_EV (MASK_EV_POS | MASK_EV_YAW | MASK_EV_HGT)
-#define MASK_GPS (MASK_GPS_POS | MASK_GPS_VEL | MASK_GPS_HGT)
+#define MASK_EV     (MASK_EV_POS | MASK_EV_YAW | MASK_EV_HGT)
+#define MASK_GPS    (MASK_GPS_POS | MASK_GPS_VEL | MASK_GPS_HGT)
 
 // GPS pre-flight check bit locations
-#define MASK_GPS_NSATS  (1<<0)
-#define MASK_GPS_GDOP   (1<<1)
-#define MASK_GPS_HACC   (1<<2)
-#define MASK_GPS_VACC   (1<<3)
-#define MASK_GPS_SACC   (1<<4)
-#define MASK_GPS_HDRIFT (1<<5)
-#define MASK_GPS_VDRIFT (1<<6)
-#define MASK_GPS_HSPD   (1<<7)
-#define MASK_GPS_VSPD   (1<<8)
+// #define MASK_GPS_NSATS  (1<<0)
+// #define MASK_GPS_GDOP   (1<<1)
+// #define MASK_GPS_HACC   (1<<2)
+// #define MASK_GPS_VACC   (1<<3)
+// #define MASK_GPS_SACC   (1<<4)
+// #define MASK_GPS_HDRIFT (1<<5)
+// #define MASK_GPS_VDRIFT (1<<6)
+// #define MASK_GPS_HSPD   (1<<7)
+// #define MASK_GPS_VSPD   (1<<8)
+
+constexpr auto MASK_GPS_NSATS  = 1<<0;
+constexpr auto MASK_GPS_GDOP   = 1<<1;
+constexpr auto MASK_GPS_HACC   = 1<<2;
+constexpr auto MASK_GPS_VACC   = 1<<3;
+constexpr auto MASK_GPS_SACC   = 1<<4;
+constexpr auto MASK_GPS_HDRIFT = 1<<5;
+constexpr auto MASK_GPS_VDRIFT = 1<<6;
+constexpr auto MASK_GPS_HSPD   = 1<<7;
+constexpr auto MASK_GPS_VSPD   = 1<<8;
 
 namespace eskf {
 
